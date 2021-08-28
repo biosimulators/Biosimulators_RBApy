@@ -11,18 +11,83 @@ Information about how to create COMBINE/OMEX archives which can be executed by B
 
 A list of the algorithms and algorithm parameters supported by RBApy is available at `BioSimulators <https://biosimulators.org/simulators/rbapy>`_.
 
-Models (RBApy)
-++++++++++++++++++
 
-BioSimulators-RBApy can execute models encoded in `RBApy format <https://sysbioinra.github.io/RBApy/usage.html>`_.
+Models (RBApy)
+^^^^^^^^^^^^^^
+
+BioSimulators-RBApy can execute models encoded in `RBApy format <https://sysbioinra.github.io/RBApy/usage.html>`_ (``urn:sedml:language:rba``).
+
 
 Simulation experiments (SED-ML, KISAO)
-++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 BioSimulators-RBApy can execute simulation experiments encoded in SED-ML, using KiSAO to indicate specific algorithms and their parameters. Information about the algorithms (KiSAO terms), algorithm parameters (KiSAO terms), and outputs supported by BioSimulators-RBApy is available from the `BioSimulators registry <https://biosimulators.org/simulators/rbapy>`_.
 
+
+Models (``sedml.Model``)
+""""""""""""""""""""""""
+
+The TSV and XML files for a model should be packaged into a zip archive and specified using language URN ``urn:sedml:language:rba``::
+
+    <model id="model" language="urn:sedml:language:rba" source="model.zip" />
+
+
+Targets for model changes (``sedml.AttributeChange``)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+Targets for changes to model parameters should be encoded using the name of the parameter as ``target="parameters.functions.{ function id }.parameters.{ parameter id }"`` such as ``target="parameters.functions.LINEAR_CONSTANT.parameters.amino_acid_concentration"``.::
+
+    <attributeChange target=""parameters.functions.LINEAR_CONSTANT.parameters.amino_acid_concentration" newValue="0.25" />
+
+
+Simulations (``sedml.SteadyState``, ``sedml.Algorithm``)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+RBA simulations should be encoded using the ``SteadyState`` class with simulation algorithm ``KISAO_0000669``::
+
+    <steadyState id="simulation">
+      <algorithm kisaoID="KISAO:0000669" />
+    </steadyState>
+
+
+Targets for observables (``sedml.Variable`` of ``sedml.DataGenerator``)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Targets for objectives should be encoded as ``target="objective"``::
+
+    <dataGenerator id="data_generator_objective">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <ci> variable_objective </ci>
+      </math>
+      <listOfVariables>
+        <variable id="variable_objective" target="objective" taskReference="task"/>
+      </listOfVariables>
+    </dataGenerator>
+
+Targets for the primals of variables should be encoded using the names of the variables as ``target="variables.{ variable name }"`` such as ``target="variables.M_e1_c"``.::
+
+    <dataGenerator id="data_generator_M_e1_c">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <ci> variable_M_e1_c </ci>
+      </math>
+      <listOfVariables>
+        <variable id="variable_M_e1_c" target="variables.M_e1_c" taskReference="task"/>
+      </listOfVariables>
+    </dataGenerator>
+
+Targets for the duals of constraints should be encoded using the names of the constraints as ``target="constraints.{ contraint name }"`` such as ``target="constraints.test_process_2_machinery"``.::
+
+    <dataGenerator id="data_generator_test_process_2_machinery">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <ci> variable_test_process_2_machinery </ci>
+      </math>
+      <listOfVariables>
+        <variable id="variable_test_process_2_machinery" target="constraints.test_process_2_machinery" taskReference="task"/>
+      </listOfVariables>
+    </dataGenerator>
+
+
 Example COMBINE/OMEX archives
-+++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Examples of COMBINE/OMEX archives for simulations which BioSimulators-RBApy can execute are available in the `BioSimulators test suite <https://github.com/biosimulators/Biosimulators_test_suite/tree/deploy/examples>`_.
 
