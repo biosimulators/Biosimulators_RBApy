@@ -15,9 +15,17 @@ A simple web application and web service for using RBApy to execute COMBINE/OMEX
 ## Installation
 
 ### Install Python package
-```
-pip install biosimulators-rbapy
-```
+
+1. Install requirements
+   * [Python](https://python.org)
+   * [Pip](https://pip.pypa.io/)
+   * [IBM CPLEX](https://www.ibm.com/analytics/cplex-optimizer)
+   * [IBM CPLEX Python API](https://www.ibm.com/docs/en/icos/20.1.0?topic=cplex-setting-up-python-api)
+   * [RBApy](https://sysbioinra.github.io/RBApy/)
+2. Install this package
+   ```
+   pip install biosimulators-rbapy
+   ```
 
 ### Install Docker image
 ```

@@ -6,7 +6,7 @@ BioSimulators-RBApy is available as a command-line program and as a command-line
 Command-line program
 --------------------
 
-First, install `Python <https://python.org>`_, `Pip <https://pip.pypa.io/>`_, `IBM CPLEX <https://www.ibm.com/analytics/cplex-optimizer>`_ and `RBApy <https://sysbioinra.github.io/RBApy/>`_.
+First, install `Python <https://python.org>`_, `Pip <https://pip.pypa.io/>`_, `IBM CPLEX <https://www.ibm.com/analytics/cplex-optimizer>`_ , the `IBM CPLEX Python API <https://www.ibm.com/docs/en/icos/20.1.0?topic=cplex-setting-up-python-api>`_, and `RBApy <https://sysbioinra.github.io/RBApy/>`_.
 
 Second, run the following command to install BioSimulators-RBApy:
 
