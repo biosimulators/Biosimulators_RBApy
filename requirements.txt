@@ -1,0 +1,4 @@
+biosimulators_utils[logging] >= 0.1.109
+kisao >= 2.27
+numpy
+# rbapy

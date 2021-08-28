@@ -1,0 +1,25 @@
+# Dockerfile
+Dockerfile
+
+# git
+.gitignore
+
+# compiled python
+biosimulators_rbapy.egg-info/
+*.pyc
+__pycache__/
+
+# specs
+biosimulators.json
+
+# tests
+tests/
+htmlcov/
+pytest.ini
+.flake8
+
+# documentation
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+docs-src/
+docs/

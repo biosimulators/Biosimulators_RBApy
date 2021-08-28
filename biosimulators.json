@@ -1,0 +1,238 @@
+{
+  "id": "rbapy",
+  "name": "RBApy",
+  "version": "1.0.2",
+  "description": "Package for automated generation and simulation of bacterial Resource Balance Analysis (RBA) models.",
+  "urls": [{
+      "title": null,
+      "type": "Home page",
+      "url": "https://github.com/SysBioInra/RBApy"
+    },
+    {
+      "type": "Source repository",
+      "url": "https://github.com/SysBioInra/RBApy"
+    },
+    {
+      "type": "Issue tracker",
+      "url": "https://github.com/SysBioInra/RBApy/issues"
+    },
+    {
+      "type": "License",
+      "url": "https://github.com/SysBioInra/RBApy/blob/master/LICENSE.txt"
+    }
+  ],
+  "image": {
+    "url": "ghcr.io/biosimulators/biosimulators_rbapy/rbapy:1.0.2",
+    "format": {
+      "namespace": "EDAM",
+      "id": "format_3973",
+      "version": null,
+      "supportedFeatures": []
+    },
+    "operatingSystemType": "Linux"
+  },
+  "authors": [{
+      "middleName": null,
+      "firstName": "Ana",
+      "lastName": "Bulović",
+      "identifiers": []
+    },
+    {
+      "middleName": null,
+      "firstName": "Marc",
+      "lastName": "Dinh",
+      "identifiers": [{
+        "namespace": "orcid",
+        "id": "0000-0002-9099-2845",
+        "url": "https://orcid.org/0000-0002-9099-2845"
+      }]
+    },
+    {
+      "middleName": null,
+      "firstName": "Anne",
+      "lastName": "Goelzer",
+      "identifiers": [{
+        "namespace": "orcid",
+        "id": "0000-0003-2222-6142",
+        "url": "https://orcid.org/0000-0003-2222-6142"
+      }]
+    }
+  ],
+  "references": {
+    "identifiers": [],
+    "citations": [{
+        "pages": "12-22",
+        "volume": 55,
+        "journal": "Metabolic Engineering",
+        "title": "Automated generation of bacterial resource allocation models",
+        "authors": "Ana Bulović, Stephan Fischer, Marc Dinh, Felipe Golib, Wolfram Liebermeister, Christian Poirier, Laurent Tournier, Edda Klipp, Vincent Fromion & Anne Goelzer",
+        "year": 2019,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1016/j.ymben.2019.06.001",
+          "url": "https://doi.org/10.1016/j.ymben.2019.06.001"
+        }]
+      },
+      {
+        "pages": "945-952",
+        "volume": 45,
+        "issue": "4",
+        "journal": "Biochemical Society Transactions",
+        "title": "Resource allocation in living organisms",
+        "authors": "Anne Goelzer & Vincent Fromion",
+        "year": 2017,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1042/BST20160436",
+          "url": "https://doi.org/10.1042/BST20160436"
+        }]
+      },
+      {
+        "pages": "232-243",
+        "volume": 32,
+        "journal": "Metabolic Engineering",
+        "title": "Quantitative prediction of genome-wide resource allocation in bacteria",
+        "authors": "Anne Goelzer, Jan Muntel, Victor Chubukov, Matthieu Jules, Eric Prestel, Rolf Nölker, Mahendra Mariadassou, Stéphane Aymerich, Michael Hecker, Philippe Noirot, Dörte Becher & Vincent Fromion",
+        "year": 2015,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1016/j.ymben.2015.10.003",
+          "url": "https://doi.org/10.1016/j.ymben.2015.10.003"
+        }]
+      },
+      {
+        "pages": "978-988",
+        "volume": 1810,
+        "issue": "10",
+        "journal": "BBA General Subjects",
+        "title": "Bacterial growth rate reflects a bottleneck in resource allocation",
+        "authors": "Anne Goelzer & Vincent Fromion",
+        "year": 2011,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1016/j.bbagen.2011.05.014",
+          "url": "https://doi.org/10.1016/j.bbagen.2011.05.014"
+        }]
+      },
+      {
+        "pages": "1210-1218",
+        "volume": 47,
+        "issue": "6",
+        "journal": "Automatica",
+        "title": "Cell design in bacteria as a convex optimization problem",
+        "authors": "Anne Goelzer, Vincent Fromion & G. Scorletti",
+        "year": 2011,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1016/j.automatica.2011.02.038",
+          "url": "https://doi.org/10.1016/j.automatica.2011.02.038"
+        }]
+      }
+    ]
+  },
+  "license": {
+    "namespace": "SPDX",
+    "id": "GPL-3.0-or-later"
+  },
+  "algorithms": [{
+    "id": "rba",
+    "name": "Resource Balance Analysis",
+    "kisaoId": {
+      "namespace": "KISAO",
+      "id": "KISAO_0000669"
+    },
+    "modelingFrameworks": [{
+      "namespace": "SBO",
+      "id": "SBO_0000692"
+    }],
+    "modelFormats": [{
+      "namespace": "EDAM",
+      "id": "format_9012",
+      "version": null,
+      "supportedFeatures": []
+    }],
+    "simulationFormats": [{
+      "namespace": "EDAM",
+      "id": "format_3685",
+      "version": null,
+      "supportedFeatures": []
+    }],
+    "archiveFormats": [{
+      "namespace": "EDAM",
+      "id": "format_3686",
+      "version": "1",
+      "supportedFeatures": []
+    }],
+    "citations": [{
+        "pages": "12-22",
+        "volume": 55,
+        "journal": "Metabolic Engineering",
+        "title": "Automated generation of bacterial resource allocation models",
+        "authors": "Ana Bulović, Stephan Fischer, Marc Dinh, Felipe Golib, Wolfram Liebermeister, Christian Poirier, Laurent Tournier, Edda Klipp, Vincent Fromion & Anne Goelzer",
+        "year": 2019,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1016/j.ymben.2019.06.001",
+          "url": "https://doi.org/10.1016/j.ymben.2019.06.001"
+        }]
+      },
+      {
+        "pages": "1210-1218",
+        "volume": 47,
+        "issue": "6",
+        "journal": "Automatica",
+        "title": "Cell design in bacteria as a convex optimization problem",
+        "authors": "Anne Goelzer, Vincent Fromion & G. Scorletti",
+        "year": 2011,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1016/j.automatica.2011.02.038",
+          "url": "https://doi.org/10.1016/j.automatica.2011.02.038"
+        }]
+      }
+    ],
+    "parameters": [],
+    "dependentDimensions": [],
+    "dependentVariableTargetPatterns": [{
+        "variables": "objective",
+        "targetPattern": "objective"
+      },
+      {
+        "variables": "primals",
+        "targetPattern": "primals.{variable-name}"
+      },
+      {
+        "variables": "duals",
+        "targetPattern": "duals.{constraint-name}"
+      }
+    ],
+    "availableSoftwareInterfaceTypes": ["library", "command-line application", "BioSimulators Docker image"],
+    "dependencies": [{
+      "name": "CPLEX",
+      "version": null,
+      "required": true,
+      "freeNonCommercialLicense": true,
+      "url": "https://www.ibm.com/analytics/cplex-optimizer"
+    }]
+  }],
+  "interfaceTypes": [
+    "library",
+    "command-line application",
+    "BioSimulators Docker image"
+  ],
+  "supportedOperatingSystemTypes": [
+    "platform-independent"
+  ],
+  "supportedProgrammingLanguages": [{
+    "namespace": "Linguist",
+    "id": "Python"
+  }],
+  "funding": [],
+  "biosimulators": {
+    "meta": null,
+    "imageVersion": "1.0.0",
+    "specificationVersion": "1.0.0",
+    "validationTests": null,
+    "validated": false
+  }
+}
