@@ -198,12 +198,12 @@
         "targetPattern": "objective"
       },
       {
-        "variables": "primals",
-        "targetPattern": "primals.{variable-name}"
+        "variables": "variable primals",
+        "targetPattern": "variables.{variable-name}"
       },
       {
-        "variables": "duals",
-        "targetPattern": "duals.{constraint-name}"
+        "variables": "constraint duals",
+        "targetPattern": "constraints.{constraint-name}"
       }
     ],
     "availableSoftwareInterfaceTypes": ["library", "command-line application", "BioSimulators Docker image"],
