@@ -143,6 +143,7 @@ jobs:
               python -m pip install pytest pytest-cov
               python -m pip install .[tests]
               python -m pytest tests/ --cov=./ --cov-report=xml
+              chmod ugo+rw ./coverage.xml
             "
 
       - name: Upload the coverage report to Codecov
@@ -169,6 +170,8 @@ jobs:
               sphinx-apidoc . setup.py --output-dir docs-src/source --force --module-first --no-toc
               mkdir -p docs-src/_static
               sphinx-build docs-src docs
+              chmod ugo+rw -R docs-src
+              chmod ugo+rw -R docs
             "
 
       #############################################
