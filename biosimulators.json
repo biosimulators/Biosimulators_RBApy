@@ -59,7 +59,16 @@
     }
   ],
   "references": {
-    "identifiers": [],
+    "identifiers": [{
+            "namespace": "pypi",
+            "id": "rbapy",
+            "url": "https://pypi.org/project/rbapy/"
+          },
+        {
+            "namespace": "pypi",
+            "id": "biosimulators-rbapy",
+            "url": "https://pypi.org/project/biosimulators-rbapy/"
+          }],
     "citations": [{
         "pages": "12-22",
         "volume": 55,

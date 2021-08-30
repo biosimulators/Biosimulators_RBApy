@@ -12,6 +12,11 @@ from ._version import __version__
 from .core import exec_sedml_docs_in_combine_archive
 from biosimulators_utils.simulator.cli import build_cli
 
+__all__ = [
+    'App',
+    'main',
+]
+
 App = build_cli('biosimulators-rbapy', __version__,
                 'RBApy', get_simulator_version(), 'https://sysbioinra.github.io/RBApy/',
                 exec_sedml_docs_in_combine_archive)
