@@ -52,7 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#biosimulators-rbapy-core-module">biosimulators_rbapy.core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-biosimulators_rbapy.core">biosimulators_rbapy.core module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../about.html">About BioSimulators-RBApy</a></li>
@@ -109,13 +109,166 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="biosimulators-rbapy-package">
-<h1>biosimulators_rbapy package<a class="headerlink" href="#biosimulators-rbapy-package" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-biosimulators_rbapy">
+<span id="biosimulators-rbapy-package"></span><h1>biosimulators_rbapy package<a class="headerlink" href="#module-biosimulators_rbapy" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="biosimulators_rbapy.exec_sed_task">
+<code class="sig-prename descclassname"><span class="pre">biosimulators_rbapy.</span></code><code class="sig-name descname"><span class="pre">exec_sed_task</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/biosimulators/Biosimulators_RBApy/blob/dev/biosimulators_rbapy/__init__.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#biosimulators_rbapy.exec_sed_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a task and save its results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Task</span></code>) – task</p></li>
+<li><p><strong>variables</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Variable</span></code>) – variables that should be recorded</p></li>
+<li><p><strong>log</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">TaskLog</span></code>, optional) – log for the task</p></li>
+<li><p><strong>config</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Config</span></code>, optional) – BioSimulators common configuration</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableResults</span></code>: results of variables
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">TaskLog</span></code>: log</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – <ul class="simple">
+<li><p>Task requires a time course that RBApy doesn’t support
+    * Task requires an algorithm that RBApy doesn’t support</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="biosimulators_rbapy.exec_sedml_docs_in_combine_archive">
+<code class="sig-prename descclassname"><span class="pre">biosimulators_rbapy.</span></code><code class="sig-name descname"><span class="pre">exec_sedml_docs_in_combine_archive</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archive_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/biosimulators/Biosimulators_RBApy/blob/dev/biosimulators_rbapy/__init__.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#biosimulators_rbapy.exec_sedml_docs_in_combine_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the SED tasks defined in a COMBINE/OMEX archive and save the outputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>archive_filename</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – path to COMBINE/OMEX archive</p></li>
+<li><p><strong>out_dir</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – <p>path to store the outputs of the archive</p>
+<ul>
+<li><p>CSV: directory in which to save outputs to files
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">out_dir</span> <span class="pre">}/{</span> <span class="pre">relative-path-to-SED-ML-file-within-archive</span> <span class="pre">}/{</span> <span class="pre">report.id</span> <span class="pre">}.csv</span></code></p></li>
+<li><p>HDF5: directory in which to save a single HDF5 file (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">out_dir</span> <span class="pre">}/reports.h5</span></code>),
+with reports at keys <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">relative-path-to-SED-ML-file-within-archive</span> <span class="pre">}/{</span> <span class="pre">report.id</span> <span class="pre">}</span></code> within the HDF5 file</p></li>
+</ul>
+</p></li>
+<li><p><strong>config</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Config</span></code>, optional) – BioSimulators common configuration</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SedDocumentResults</span></code>: results</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CombineArchiveLog</span></code>: log</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="biosimulators_rbapy.get_simulator_version">
+<code class="sig-prename descclassname"><span class="pre">biosimulators_rbapy.</span></code><code class="sig-name descname"><span class="pre">get_simulator_version</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/biosimulators/Biosimulators_RBApy/blob/dev/biosimulators_rbapy/__init__.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#biosimulators_rbapy.get_simulator_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the version of RBApy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>version</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="biosimulators-rbapy-core-module">
-<h2>biosimulators_rbapy.core module<a class="headerlink" href="#biosimulators-rbapy-core-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-biosimulators_rbapy.core">
+<span id="biosimulators-rbapy-core-module"></span><h2>biosimulators_rbapy.core module<a class="headerlink" href="#module-biosimulators_rbapy.core" title="Permalink to this headline">¶</a></h2>
+<p>BioSimulators-compliant command-line interface to the <a class="reference external" href="https://sysbioinra.github.io/RBApy/">RBApy</a> simulation program.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Author</dt>
+<dd class="field-odd"><p>Jonathan Karr &lt;<a class="reference external" href="mailto:karr&#37;&#52;&#48;mssm&#46;edu">karr<span>&#64;</span>mssm<span>&#46;</span>edu</a>&gt;</p>
+</dd>
+<dt class="field-even">Date</dt>
+<dd class="field-even"><p>2021-08-12</p>
+</dd>
+<dt class="field-odd">Copyright</dt>
+<dd class="field-odd"><p>2021, Center for Reproducible Biomedical Modeling</p>
+</dd>
+<dt class="field-even">License</dt>
+<dd class="field-even"><p>MIT</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt id="biosimulators_rbapy.core.exec_sed_task">
+<code class="sig-prename descclassname"><span class="pre">biosimulators_rbapy.core.</span></code><code class="sig-name descname"><span class="pre">exec_sed_task</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/biosimulators/Biosimulators_RBApy/blob/dev/biosimulators_rbapy/core.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#biosimulators_rbapy.core.exec_sed_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a task and save its results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Task</span></code>) – task</p></li>
+<li><p><strong>variables</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Variable</span></code>) – variables that should be recorded</p></li>
+<li><p><strong>log</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">TaskLog</span></code>, optional) – log for the task</p></li>
+<li><p><strong>config</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Config</span></code>, optional) – BioSimulators common configuration</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableResults</span></code>: results of variables
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">TaskLog</span></code>: log</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – <ul class="simple">
+<li><p>Task requires a time course that RBApy doesn’t support
+    * Task requires an algorithm that RBApy doesn’t support</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="biosimulators_rbapy.core.exec_sedml_docs_in_combine_archive">
+<code class="sig-prename descclassname"><span class="pre">biosimulators_rbapy.core.</span></code><code class="sig-name descname"><span class="pre">exec_sedml_docs_in_combine_archive</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archive_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/biosimulators/Biosimulators_RBApy/blob/dev/biosimulators_rbapy/core.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#biosimulators_rbapy.core.exec_sedml_docs_in_combine_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the SED tasks defined in a COMBINE/OMEX archive and save the outputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>archive_filename</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – path to COMBINE/OMEX archive</p></li>
+<li><p><strong>out_dir</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – <p>path to store the outputs of the archive</p>
+<ul>
+<li><p>CSV: directory in which to save outputs to files
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">out_dir</span> <span class="pre">}/{</span> <span class="pre">relative-path-to-SED-ML-file-within-archive</span> <span class="pre">}/{</span> <span class="pre">report.id</span> <span class="pre">}.csv</span></code></p></li>
+<li><p>HDF5: directory in which to save a single HDF5 file (<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">out_dir</span> <span class="pre">}/reports.h5</span></code>),
+with reports at keys <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">relative-path-to-SED-ML-file-within-archive</span> <span class="pre">}/{</span> <span class="pre">report.id</span> <span class="pre">}</span></code> within the HDF5 file</p></li>
+</ul>
+</p></li>
+<li><p><strong>config</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Config</span></code>, optional) – BioSimulators common configuration</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SedDocumentResults</span></code>: results</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CombineArchiveLog</span></code>: log</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 

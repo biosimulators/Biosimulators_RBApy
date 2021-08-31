@@ -119,11 +119,70 @@
 <p>A list of the algorithms and algorithm parameters supported by RBApy is available at <a class="reference external" href="https://biosimulators.org/simulators/rbapy">BioSimulators</a>.</p>
 <div class="section" id="models-rbapy">
 <h3>Models (RBApy)<a class="headerlink" href="#models-rbapy" title="Permalink to this headline">¶</a></h3>
-<p>BioSimulators-RBApy can execute models encoded in <a class="reference external" href="https://sysbioinra.github.io/RBApy/usage.html">RBApy format</a>.</p>
+<p>BioSimulators-RBApy can execute models encoded in <a class="reference external" href="https://sysbioinra.github.io/RBApy/usage.html">RBApy format</a> (<code class="docutils literal notranslate"><span class="pre">urn:sedml:language:rba</span></code>).</p>
 </div>
 <div class="section" id="simulation-experiments-sed-ml-kisao">
 <h3>Simulation experiments (SED-ML, KISAO)<a class="headerlink" href="#simulation-experiments-sed-ml-kisao" title="Permalink to this headline">¶</a></h3>
 <p>BioSimulators-RBApy can execute simulation experiments encoded in SED-ML, using KiSAO to indicate specific algorithms and their parameters. Information about the algorithms (KiSAO terms), algorithm parameters (KiSAO terms), and outputs supported by BioSimulators-RBApy is available from the <a class="reference external" href="https://biosimulators.org/simulators/rbapy">BioSimulators registry</a>.</p>
+<div class="section" id="models-sedml-model">
+<h4>Models (<code class="docutils literal notranslate"><span class="pre">sedml.Model</span></code>)<a class="headerlink" href="#models-sedml-model" title="Permalink to this headline">¶</a></h4>
+<p>The TSV and XML files for a model should be packaged into a zip archive and specified using language URN <code class="docutils literal notranslate"><span class="pre">urn:sedml:language:rba</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">model</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;model&quot;</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;urn:sedml:language:rba&quot;</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;model.zip&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="targets-for-model-changes-sedml-attributechange">
+<h4>Targets for model changes (<code class="docutils literal notranslate"><span class="pre">sedml.AttributeChange</span></code>)<a class="headerlink" href="#targets-for-model-changes-sedml-attributechange" title="Permalink to this headline">¶</a></h4>
+<p>Targets for changes to model parameters should be encoded using the name of the parameter as <code class="docutils literal notranslate"><span class="pre">target=&quot;parameters.functions.{</span> <span class="pre">function</span> <span class="pre">id</span> <span class="pre">}.parameters.{</span> <span class="pre">parameter</span> <span class="pre">id</span> <span class="pre">}&quot;</span></code> such as <code class="docutils literal notranslate"><span class="pre">target=&quot;parameters.functions.LINEAR_CONSTANT.parameters.amino_acid_concentration&quot;</span></code>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">attributeChange</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="n">parameters</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">LINEAR_CONSTANT</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">amino_acid_concentration</span><span class="s2">&quot; newValue=&quot;</span><span class="mf">0.25</span><span class="s2">&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="simulations-sedml-steadystate-sedml-algorithm">
+<h4>Simulations (<code class="docutils literal notranslate"><span class="pre">sedml.SteadyState</span></code>, <code class="docutils literal notranslate"><span class="pre">sedml.Algorithm</span></code>)<a class="headerlink" href="#simulations-sedml-steadystate-sedml-algorithm" title="Permalink to this headline">¶</a></h4>
+<p>RBA simulations should be encoded using the <code class="docutils literal notranslate"><span class="pre">SteadyState</span></code> class with simulation algorithm <code class="docutils literal notranslate"><span class="pre">KISAO_0000669</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">steadyState</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;simulation&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">algorithm</span> <span class="n">kisaoID</span><span class="o">=</span><span class="s2">&quot;KISAO:0000669&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">steadyState</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="targets-for-observables-sedml-variable-of-sedml-datagenerator">
+<h4>Targets for observables (<code class="docutils literal notranslate"><span class="pre">sedml.Variable</span></code> of <code class="docutils literal notranslate"><span class="pre">sedml.DataGenerator</span></code>)<a class="headerlink" href="#targets-for-observables-sedml-variable-of-sedml-datagenerator" title="Permalink to this headline">¶</a></h4>
+<p>Targets for objectives should be encoded as <code class="docutils literal notranslate"><span class="pre">target=&quot;objective&quot;</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dataGenerator</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;data_generator_objective&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">math</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/1998/Math/MathML&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ci</span><span class="o">&gt;</span> <span class="n">variable_objective</span> <span class="o">&lt;/</span><span class="n">ci</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">math</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">listOfVariables</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">variable</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;variable_objective&quot;</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;objective&quot;</span> <span class="n">taskReference</span><span class="o">=</span><span class="s2">&quot;task&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="n">listOfVariables</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">dataGenerator</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Targets for the primals of variables should be encoded using the names of the variables as <code class="docutils literal notranslate"><span class="pre">target=&quot;variables.{</span> <span class="pre">variable</span> <span class="pre">name</span> <span class="pre">}&quot;</span></code> such as <code class="docutils literal notranslate"><span class="pre">target=&quot;variables.M_e1_c&quot;</span></code>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dataGenerator</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;data_generator_M_e1_c&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">math</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/1998/Math/MathML&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ci</span><span class="o">&gt;</span> <span class="n">variable_M_e1_c</span> <span class="o">&lt;/</span><span class="n">ci</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">math</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">listOfVariables</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">variable</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;variable_M_e1_c&quot;</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;variables.M_e1_c&quot;</span> <span class="n">taskReference</span><span class="o">=</span><span class="s2">&quot;task&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="n">listOfVariables</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">dataGenerator</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Targets for the duals of constraints should be encoded using the names of the constraints as <code class="docutils literal notranslate"><span class="pre">target=&quot;constraints.{</span> <span class="pre">contraint</span> <span class="pre">name</span> <span class="pre">}&quot;</span></code> such as <code class="docutils literal notranslate"><span class="pre">target=&quot;constraints.test_process_2_machinery&quot;</span></code>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dataGenerator</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;data_generator_test_process_2_machinery&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">math</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/1998/Math/MathML&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ci</span><span class="o">&gt;</span> <span class="n">variable_test_process_2_machinery</span> <span class="o">&lt;/</span><span class="n">ci</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">math</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">listOfVariables</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">variable</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;variable_test_process_2_machinery&quot;</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;constraints.test_process_2_machinery&quot;</span> <span class="n">taskReference</span><span class="o">=</span><span class="s2">&quot;task&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="n">listOfVariables</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">dataGenerator</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="example-combine-omex-archives">
 <h3>Example COMBINE/OMEX archives<a class="headerlink" href="#example-combine-omex-archives" title="Permalink to this headline">¶</a></h3>
