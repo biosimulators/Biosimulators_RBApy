@@ -9,20 +9,16 @@
 from biosimulators_rbapy import __main__
 from biosimulators_rbapy import core
 from biosimulators_utils.combine import data_model as combine_data_model
-from biosimulators_utils.combine.exceptions import CombineArchiveExecutionError
 from biosimulators_utils.combine.io import CombineArchiveWriter
 from biosimulators_utils.config import get_config
 from biosimulators_utils.report import data_model as report_data_model
 from biosimulators_utils.report.io import ReportReader
-from biosimulators_utils.simulator.exec import exec_sedml_docs_in_archive_with_containerized_simulator
-from biosimulators_utils.simulator.specs import gen_algorithms_from_specs
 from biosimulators_utils.sedml import data_model as sedml_data_model
 from biosimulators_utils.sedml.io import SedmlSimulationWriter
 from biosimulators_utils.sedml.utils import append_all_nested_children_to_doc
 from biosimulators_utils.warnings import BioSimulatorsWarning
 from kisao.exceptions import AlgorithmCannotBeSubstitutedException
 from unittest import mock
-import copy
 import json
 import numpy
 import numpy.testing
@@ -166,7 +162,9 @@ class CliTestCase(unittest.TestCase):
         doc, archive_filename = self._build_combine_archive()
 
         out_dir = os.path.join(self.dirname, 'out')
-        core.exec_sedml_docs_in_combine_archive(archive_filename, out_dir)
+        _, log = core.exec_sedml_docs_in_combine_archive(archive_filename, out_dir)
+        if log.exception:
+            raise log.exception
 
         self._assert_combine_archive_outputs(doc, out_dir)
 
@@ -248,8 +246,6 @@ class CliTestCase(unittest.TestCase):
         report = ReportReader().run(doc.outputs[0], out_dir, 'sim.sedml/report', format=report_data_model.ReportFormat.h5)
 
         self.assertEqual(sorted(report.keys()), sorted([d.id for d in doc.outputs[0].data_sets]))
-
-        sim = doc.tasks[0].simulation
 
         numpy.testing.assert_allclose(report[doc.outputs[0].data_sets[0].id], 0.6086182594299316)
 

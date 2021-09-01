@@ -51,8 +51,8 @@ def exec_sedml_docs_in_combine_archive(archive_filename, out_dir, config=None):
     """
     sed_doc_executer = functools.partial(exec_sed_doc, exec_sed_task)
     return exec_sedml_docs_in_archive(sed_doc_executer, archive_filename, out_dir,
-                                      apply_xml_model_changes=False)
-    # config=config)
+                                      apply_xml_model_changes=False,
+                                      config=config)
 
 
 def exec_sed_task(task, variables, log=None, config=None):
@@ -78,8 +78,7 @@ def exec_sed_task(task, variables, log=None, config=None):
     """
     config = config or get_config()
 
-    # if config.LOG and not log:
-    if not log:
+    if config.LOG and not log:
         log = TaskLog()
 
     # validate task
@@ -142,8 +141,7 @@ def exec_sed_task(task, variables, log=None, config=None):
         raise ValueError(msg)
 
     # configure simulation algorithm
-    # algorithm_substitution_policy = get_algorithm_substitution_policy(config=config)
-    algorithm_substitution_policy = get_algorithm_substitution_policy()
+    algorithm_substitution_policy = get_algorithm_substitution_policy(config=config)
     exec_kisao_id = get_preferred_substitute_algorithm_by_ids(
         sim.algorithm.kisao_id, ['KISAO_0000669'],
         substitution_policy=algorithm_substitution_policy)
@@ -178,8 +176,7 @@ def exec_sed_task(task, variables, log=None, config=None):
             variable_results[variable.id] = numpy.array(rba_results.dual_values[rba_id])
 
     # log action
-    # if config.LOG:
-    if True:
+    if config.LOG:
         log.algorithm = exec_kisao_id
 
         log.simulator_details = {}

@@ -31,6 +31,10 @@
     },
     "operatingSystemType": "Linux"
   },
+  "pythonApi": {
+    "package": "biosimulators-rbapy",
+    "module": "biosimulators_rbapy"
+  },
   "authors": [{
       "middleName": null,
       "firstName": "Ana",
@@ -60,11 +64,6 @@
   ],
   "references": {
     "identifiers": [{
-            "namespace": "pypi",
-            "id": "rbapy",
-            "url": "https://pypi.org/project/rbapy/"
-          },
-        {
             "namespace": "pypi",
             "id": "biosimulators-rbapy",
             "url": "https://pypi.org/project/biosimulators-rbapy/"

@@ -1,6 +1,6 @@
 FROM ghcr.io/biosimulators/biosimulators_rbapy/rbapy_base:latest
 
-ARG VERSION="0.0.1"
+ARG VERSION="0.0.2"
 ARG SIMULATOR_VERSION="1.0.2"
 
 # metadata
@@ -26,6 +26,11 @@ LABEL \
     about.license="SPDX:GPL-3.0-or-later" \
     about.tags="systems biology,biochemical networks,Resource Balance Analysis,RBA,SED-ML,COMBINE,OMEX,BioSimulators" \
     maintainer="BioSimulators Team <info@biosimulators.org>"
+
+# fonts for matplotlib
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends libfreetype6 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install RBApy
 RUN apt-get update -y \
