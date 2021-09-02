@@ -4,10 +4,29 @@
   "version": "1.0.2",
   "description": "Package for automated generation and simulation of bacterial Resource Balance Analysis (RBA) models.",
   "urls": [{
-      "title": null,
       "type": "Home page",
-      "url": "https://github.com/SysBioInra/RBApy"
+      "url": "https://sysbioinra.github.io/RBApy/"
     },
+    {
+      "type": "Installation instructions",
+      "url": "https://sysbioinra.github.io/RBApy/installation.html"
+    },
+    {
+      "type": "Tutorial",
+      "url": "https://github.com/SysBioInra/RBApy/blob/master/docs/xml_tutorial.ipynb"
+    },
+    {
+      "type": "Documentation",
+      "url": "https://sysbioinra.github.io/RBApy/"
+    },
+    {
+      "type": "Documentation",
+      "url": "https://github.com/SysBioInra/RBApy/tree/master/docs"
+    },
+    {
+      "type": "Examples",
+      "url": "https://github.com/SysBioInra/Bacterial-RBA-models"
+    },    
     {
       "type": "Source repository",
       "url": "https://github.com/SysBioInra/RBApy"
