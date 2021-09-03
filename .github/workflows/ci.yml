@@ -142,7 +142,7 @@ jobs:
             -c "
               python -m pip install pytest pytest-cov
               python -m pip install .[tests]
-              python -m pytest tests/ --cov=./ --cov-report=xml
+              python -m pytest tests/ --cov=./biosimulators_rbapy/ --cov-report=xml
               chmod ugo+rw ./coverage.xml
             "
 
