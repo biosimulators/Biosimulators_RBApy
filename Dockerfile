@@ -1,6 +1,6 @@
 FROM python:3.9-slim-buster
 
-ARG VERSION="0.0.2"
+ARG VERSION="0.0.3"
 ARG SIMULATOR_VERSION="1.0.2"
 
 # metadata

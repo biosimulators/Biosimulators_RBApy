@@ -241,7 +241,22 @@
       "required": true,
       "freeNonCommercialLicense": true,
       "url": "https://www.ibm.com/analytics/cplex-optimizer"
-    }]
+    },
+    {
+      "name": "Gurobi",
+      "version": null,
+      "required": true,
+      "freeNonCommercialLicense": true,
+      "url": "https://www.gurobi.com/products/gurobi-optimizer/"
+    },
+    {
+      "name": "GLPK",
+      "version": null,
+      "required": true,
+      "freeNonCommercialLicense": true,
+      "url": "https://www.gnu.org/software/glpk/"
+    }
+  ]
   }],
   "interfaceTypes": [
     "library",
