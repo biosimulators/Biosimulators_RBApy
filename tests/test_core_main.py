@@ -84,7 +84,7 @@ class CliTestCase(unittest.TestCase):
         # check that log can be serialized to JSON
         self.assertEqual(log.algorithm, 'KISAO_0000669')
         self.assertEqual(log.simulator_details['method'], 'rba.model.RbaModel.solve')
-        self.assertEqual(log.simulator_details['lpSolver'], 'cplex')
+        self.assertIn(log.simulator_details['lpSolver'], ['cplex', 'glpk', 'glpk_exact', 'gurobi', 'scipy'])
 
         json.dumps(log.to_json())
 

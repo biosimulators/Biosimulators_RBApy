@@ -137,3 +137,9 @@ For example, the following command could be used to use the Docker image to exec
         ghcr.io/biosimulators/rbapy:latest \
             -i /tmp/working-dir/modeling-study.omex \
             -o /tmp/working-dir
+
+
+Using BioSimulators-RBApy with a Gurobi license
+-----------------------------------------------
+
+Gurobi licenses can be used either by setting environment variables prefixed with ``GRB_`` or by saving your license to your home directory (``~/gurobi.lic``) or the appropriate location for your OS (e.g., ``/opt/gurobi/gurobi.lic`` for Linux).

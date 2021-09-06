@@ -52,7 +52,8 @@
   },
   "pythonApi": {
     "package": "biosimulators-rbapy",
-    "module": "biosimulators_rbapy"
+    "module": "biosimulators_rbapy",
+      "installationInstructions": "https://docs.biosimulators.org/Biosimulators_RBApy/installation.html"
   },
   "authors": [{
       "middleName": null,

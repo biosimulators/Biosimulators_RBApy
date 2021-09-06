@@ -1,4 +1,4 @@
-FROM ghcr.io/biosimulators/biosimulators_rbapy/rbapy_base:latest
+FROM python:3.9-slim-buster
 
 ARG VERSION="0.0.2"
 ARG SIMULATOR_VERSION="1.0.2"
@@ -15,7 +15,7 @@ LABEL \
     org.opencontainers.image.vendor="BioSimulators Team" \
     org.opencontainers.image.licenses="GPL-3.0-or-later" \
     \
-    base_image="python:3.8-slim-buster" \
+    base_image="python:3.9-slim-buster" \
     version="${VERSION}" \
     software="RBApy" \
     software.version="${SIMULATOR_VERSION}" \
@@ -27,6 +27,17 @@ LABEL \
     about.tags="systems biology,biochemical networks,Resource Balance Analysis,RBA,SED-ML,COMBINE,OMEX,BioSimulators" \
     maintainer="BioSimulators Team <info@biosimulators.org>"
 
+# Install GLPK
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends \
+        gcc \
+        libglpk-dev \
+    && pip install glpk \
+    && apt-get remove -y \
+        gcc \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
+
 # fonts for matplotlib
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends libfreetype6 \
@@ -36,7 +47,12 @@ RUN apt-get update -y \
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
-    && pip install "git+https://github.com/biosimulators/RBApy.git#egg=rba>=1.0.2" \
+    \
+    && cd /tmp \
+    && git clone https://github.com/biosimulators/RBApy.git \
+    && pip install RBApy/[glpk,gurobi] \
+    \
+    && rm -r RBApy \
     && apt-get remove -y \
         git \
     && apt-get autoremove -y \
@@ -44,7 +60,7 @@ RUN apt-get update -y \
 
 # Copy code for command-line interface into image and install it
 COPY . /root/Biosimulators_RBApy
-RUN pip install /root/Biosimulators_RBApy \
+RUN pip install /root/Biosimulators_RBApy[glpk,gurobi] \
     && rm -rf /root/Biosimulators_RBApy
 ENV VERBOSE=0 \
     MPLBACKEND=PDF

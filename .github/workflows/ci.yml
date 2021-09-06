@@ -137,6 +137,9 @@ jobs:
             --rm \
             --entrypoint bash \
             --mount type=bind,source=${cwd},target=/root/Biosimulators_RBApy \
+            --env "GRB_WLSACCESSID=${{ secrets.GRB_WLSACCESSID }}" \
+            --env "GRB_WLSSECRET=${{ secrets.GRB_WLSSECRET }}" \
+            --env "GRB_LICENSEID=${{ secrets.GRB_LICENSEID }}" \
             --workdir /root/Biosimulators_RBApy \
             ${{ steps.get-docker-image-tag.outputs.dockerImageBaseUrl }}:latest \
             -c "

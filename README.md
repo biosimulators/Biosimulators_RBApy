@@ -14,17 +14,33 @@ A simple web application and web service for using RBApy to execute COMBINE/OMEX
 
 ## Installation
 
+BioSimulators-RBApy requires one of the linear programming solvers [IBM CPLEX](https://www.ibm.com/analytics/cplex-optimizer), [GLPK](https://www.gnu.org/software/glpk/), or [Gurobi](https://www.gurobi.com/products/gurobi-optimizer/). Note, GLPK is slower than CPLEX and Gurobi. IBM and Gurobi both provide free licenses for academic research.
+
 ### Install Python package
 
 1. Install requirements
    * [Python](https://python.org)
    * [Pip](https://pip.pypa.io/)
-   * [IBM CPLEX](https://www.ibm.com/analytics/cplex-optimizer)
-   * [IBM CPLEX Python API](https://www.ibm.com/docs/en/icos/20.1.0?topic=cplex-setting-up-python-api)
-   * [RBApy](https://sysbioinra.github.io/RBApy/)
+   * Optionally, install CPLEX
+
 2. Install this package
    ```
    pip install biosimulators-rbapy
+   ```
+
+   To use BioSimulators-RBApy with CPLEX, install BioSimulators-RBApy with the ``cplex`` option. Note, this requires CPLEX and a CPLEX license:
+   ```
+   pip install rbapy[cplex]
+   ```
+
+   To use BioSimulators-RBApy with GLPK, install BioSimulators-RBApy with the ``glpk`` option. Note, this requires `libglpk-dev`:
+   ```
+   pip install rbapy[glpk]
+   ```
+
+   To use BioSimulators-RBApy with Gurobi, install BioSimulators-RBApy with the ``gurobi`` option. Note, this requires a Gurobi license:
+   ```
+   pip install rbapy[gurobi]
    ```
 
 ### Install Docker image
@@ -67,6 +83,9 @@ docker run \
     -i /root/in/modeling-study.omex \
     -o /root/out
 ```
+
+### Using BioSimulators-RBApy with a Gurobi license
+Gurobi licenses can be used either by setting environment variables prefixed with `GRB_` or by saving your license to your home directory (`~/gurobi.lic`) or the appropriate location for your OS (e.g., `/opt/gurobi/gurobi.lic` for Linux).
 
 ## Documentation
 Documentation is available at https://docs.biosimulators.org/Biosimulators_RBApy/.
