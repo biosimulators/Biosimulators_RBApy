@@ -102,7 +102,7 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
     Args:
         task (:obj:`Task`): task
         variables (:obj:`list` of :obj:`Variable`): variables that should be recorded
-        preprocessed_task (:obj:`object`, optional): preprocessed information about the task, including possible
+        preprocessed_task (:obj:`dict`, optional): preprocessed information about the task, including possible
             model changes and variables. This can be used to avoid repeatedly executing the same initialization
             for repeated calls to this method.
         log (:obj:`TaskLog`, optional): log for the task
@@ -130,6 +130,59 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
 
     # validate task
     model = task.model
+
+    # read model
+    rba_model = preprocessed_task['model']
+
+    # modify model
+    modify_model(rba_model, model.changes, preprocessed_task)
+
+    # instantiate simulation
+    rba_results = rba_model.solve()
+
+    # transform simulation results
+    variable_results = VariableResults()
+    for variable in variables:
+        variable_type, _, rba_id = variable.target.partition('.')
+
+        if variable_type == 'objective':
+            variable_results[variable.id] = numpy.array(rba_results.mu_opt)
+
+        elif variable_type == 'variables':
+            variable_results[variable.id] = numpy.array(rba_results.variables[rba_id])
+
+        else:
+            variable_results[variable.id] = numpy.array(rba_results.dual_values[rba_id])
+
+    # log action
+    if config.LOG:
+        log.algorithm = preprocessed_task['algorithm_kisao_id']
+
+        log.simulator_details = {}
+        log.simulator_details['method'] = '{}.{}.{}'.format(rba_model.__module__, rba_model.__class__.__name__, rba_model.solve.__name__)
+        log.simulator_details['lpSolver'] = rba_results._solver.lp_solver.name
+
+    ############################
+    # return the result of each variable and log
+    return variable_results, log
+
+
+def preprocess_sed_task(task, variables, config=None):
+    """ Preprocess a SED task, including its possible model changes and variables. This is useful for avoiding
+    repeatedly initializing tasks on repeated calls of :obj:`exec_sed_task`.
+
+    Args:
+        task (:obj:`Task`): task
+        variables (:obj:`list` of :obj:`Variable`): variables that should be recorded
+        config (:obj:`Config`, optional): BioSimulators common configuration
+
+    Returns:
+        :obj:`object`: preprocessed information about the task
+    """
+    config = config or get_config()
+
+    # validate task
+    model = task.model
     sim = task.simulation
 
     if config.VALIDATE_SEDML:
@@ -154,6 +207,22 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
     raise_errors_warnings(errors, warnings,
                           error_summary='Model `{}` is invalid.'.format(model.id),
                           warning_summary='Model `{}` may be invalid.'.format(model.id))
+
+    # validate changes
+    model_target_parameter_map = {}
+    for function in rba_model.parameters.functions:
+        for parameter in function.parameters:
+            target = 'parameters.functions.{}.parameters.{}'.format(function.id, parameter.id)
+            model_target_parameter_map[target] = parameter
+
+    invalid_changes = []
+    for i_change, change in enumerate(model.changes):
+        parameter = model_target_parameter_map.get(change.target, None)
+        if parameter is None:
+            invalid_changes.append('{}: {}'.format(i_change + 1, change.target))
+
+    if invalid_changes:
+        raise ValueError('The following changes are not valid:\n  - {}'.format('\n  - '.join(sorted(invalid_changes))))
 
     # validate variables
     constraint_matrix = rba.ConstraintMatrix(rba_model)
@@ -205,46 +274,24 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
             msg = "Algorithm changes were ignored because no algorithm parameters are supported."
             warn(msg, BioSimulatorsWarning)
 
-    # instantiate simulation
-    rba_results = rba_model.solve()
-
-    # transform simulation results
-    variable_results = VariableResults()
-    for variable in variables:
-        variable_type, _, rba_id = variable.target.partition('.')
-
-        if variable_type == 'objective':
-            variable_results[variable.id] = numpy.array(rba_results.mu_opt)
-
-        elif variable_type == 'variables':
-            variable_results[variable.id] = numpy.array(rba_results.variables[rba_id])
-
-        else:
-            variable_results[variable.id] = numpy.array(rba_results.dual_values[rba_id])
-
-    # log action
-    if config.LOG:
-        log.algorithm = exec_kisao_id
-
-        log.simulator_details = {}
-        log.simulator_details['method'] = '{}.{}.{}'.format(rba_model.__module__, rba_model.__class__.__name__, rba_model.solve.__name__)
-        log.simulator_details['lpSolver'] = rba_results._solver.lp_solver.name
-
     ############################
-    # return the result of each variable and log
-    return variable_results, log
+    # processed task
+    return {
+        'model': rba_model,
+        'model_target_parameter_map': model_target_parameter_map,
+        'algorithm_kisao_id': exec_kisao_id,
+    }
 
 
-def preprocess_sed_task(task, variables, config=None):
-    """ Preprocess a SED task, including its possible model changes and variables. This is useful for avoiding
-    repeatedly initializing tasks on repeated calls of :obj:`exec_sed_task`.
+def modify_model(model, changes, preprocessed_task):
+    """ Modify a model
 
     Args:
-        task (:obj:`Task`): task
-        variables (:obj:`list` of :obj:`Variable`): variables that should be recorded
-        config (:obj:`Config`, optional): BioSimulators common configuration
-
-    Returns:
-        :obj:`object`: preprocessed information about the task
+        model (:obj:`rba.model.RbaModel`): RBA model
+        changes (:obj:`list` of :obj:`ModelAttributeChange`): changes to apply to the model
+        preprocessed_task (:obj:`dict`): preprocessed informationa about the model
     """
-    pass
+    rba_model_target_parameter_map = preprocessed_task['model_target_parameter_map']
+    for change in changes:
+        parameter = rba_model_target_parameter_map[change.target]
+        parameter.value = float(change.new_value)

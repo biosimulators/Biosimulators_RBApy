@@ -40,6 +40,56 @@ class CliTestCase(unittest.TestCase):
     def tearDown(self):
         shutil.rmtree(self.dirname)
 
+    def test_modify_model(self):
+        # configure simulation
+        task = sedml_data_model.Task(
+            model=sedml_data_model.Model(
+                source=self.EXAMPLE_MODEL_FILENAME,
+                language=sedml_data_model.ModelLanguage.RBA.value,
+                changes=[
+                    sedml_data_model.ModelAttributeChange(
+                        target='parameters.functions.amino_acid_concentration.parameters.LINEAR_CONSTANT',
+                        new_value='10.0',
+                    ),
+                    sedml_data_model.ModelAttributeChange(
+                        target='parameters.functions.fraction_protein_Cell_outer_membrane.parameters.X_MAX',
+                        new_value='10.0',
+                    ),
+                ],
+            ),
+            simulation=sedml_data_model.SteadyStateSimulation(
+                algorithm=sedml_data_model.Algorithm(
+                    kisao_id='KISAO_0000669',
+                ),
+            ),
+        )
+
+        variables = [
+            sedml_data_model.Variable(
+                id='objective',
+                target='objective',
+                task=task),
+            sedml_data_model.Variable(
+                id='R_EX_pqq_e',
+                target="variables.R_EX_pqq_e",
+                task=task),
+            sedml_data_model.Variable(
+                id='M_pqq_p',
+                target="constraints.M_pqq_p",
+                task=task),
+        ]
+
+        preprocessed_task = core.preprocess_sed_task(task, variables)
+        self.assertEqual(preprocessed_task['model'].parameters.functions[0].parameters[1].value, 5.91)
+        self.assertEqual(preprocessed_task['model'].parameters.functions[4].parameters[4].value, 1.9)
+        core.modify_model(preprocessed_task['model'], task.model.changes, preprocessed_task)
+        self.assertEqual(preprocessed_task['model'].parameters.functions[0].parameters[1].value, 10.0)
+        self.assertEqual(preprocessed_task['model'].parameters.functions[4].parameters[4].value, 10.0)
+
+        task.model.changes[0].target = 'x'
+        with self.assertRaises(ValueError):
+            core.preprocess_sed_task(task, variables)
+
     def test_exec_sed_task_successfully(self):
         # configure simulation
         task = sedml_data_model.Task(
