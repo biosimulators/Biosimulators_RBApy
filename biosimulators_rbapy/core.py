@@ -25,7 +25,7 @@ from kisao.utils import get_preferred_substitute_algorithm_by_ids
 import numpy
 import rba
 
-__all__ = ['exec_sedml_docs_in_combine_archive', 'exec_sed_doc', 'exec_sed_task', 'preprocess_sed_task']
+__all__ = ['exec_sedml_docs_in_combine_archive', 'exec_sed_doc', 'exec_sed_task', 'preprocess_sed_task', 'modify_model']
 
 
 def exec_sedml_docs_in_combine_archive(archive_filename, out_dir, config=None):
