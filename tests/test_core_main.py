@@ -82,8 +82,14 @@ class CliTestCase(unittest.TestCase):
         preprocessed_task = core.preprocess_sed_task(task, variables)
         self.assertEqual(preprocessed_task['model'].parameters.functions[0].parameters[1].value, 5.91)
         self.assertEqual(preprocessed_task['model'].parameters.functions[4].parameters[4].value, 1.9)
+
         core.modify_model(preprocessed_task['model'], task.model.changes, preprocessed_task)
         self.assertEqual(preprocessed_task['model'].parameters.functions[0].parameters[1].value, 10.0)
+        self.assertEqual(preprocessed_task['model'].parameters.functions[4].parameters[4].value, 10.0)
+
+        task.model.changes[0].new_value = 12.0
+        core.modify_model(preprocessed_task['model'], task.model.changes, preprocessed_task)
+        self.assertEqual(preprocessed_task['model'].parameters.functions[0].parameters[1].value, 12.0)
         self.assertEqual(preprocessed_task['model'].parameters.functions[4].parameters[4].value, 10.0)
 
         task.model.changes[0].target = 'x'
