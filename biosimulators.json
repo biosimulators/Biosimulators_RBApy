@@ -179,12 +179,23 @@
       "version": null,
       "supportedFeatures": []
     }],
+    "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "parameters.functions.{ function name }.parameters.{ parameter name }",
+            "grammar": "RBApy"
+          }
+        }
+      ],
     "simulationFormats": [{
       "namespace": "EDAM",
       "id": "format_3685",
       "version": null,
       "supportedFeatures": []
     }],
+    "simulationTypes": ["SedSteadyStateSimulation"],
     "archiveFormats": [{
       "namespace": "EDAM",
       "id": "format_3686",
@@ -220,18 +231,18 @@
       }
     ],
     "parameters": [],
-    "dependentDimensions": [],
-    "dependentVariableTargetPatterns": [{
-        "variables": "objective",
-        "targetPattern": "objective"
+    "outputDimensions": [],
+    "outputVariablePatterns": [{
+        "name": "objective",
+        "target": {"value": "objective", "grammar": "RBApy"}
       },
       {
-        "variables": "variable primals",
-        "targetPattern": "variables.{variable-name}"
+        "name": "variable primals",
+        "target": {"value": "variables.{variable-name}", "grammar": "RBApy"}
       },
       {
-        "variables": "constraint duals",
-        "targetPattern": "constraints.{constraint-name}"
+        "name": "constraint duals",
+        "target": {"value": "constraints.{constraint-name}", "grammar": "RBApy"}
       }
     ],
     "availableSoftwareInterfaceTypes": ["library", "command-line application", "BioSimulators Docker image"],
