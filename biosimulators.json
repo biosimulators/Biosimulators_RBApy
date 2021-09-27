@@ -50,10 +50,16 @@
     },
     "operatingSystemType": "Linux"
   },
+  "cli": {
+    "packageRepository": "PyPI",
+    "package": "biosimulators-rbapy",
+    "command": "biosimulators-rbapy",
+    "installationInstructions": "https://docs.biosimulators.org/Biosimulators_RBApy/installation.html"
+  },
   "pythonApi": {
     "package": "biosimulators-rbapy",
     "module": "biosimulators_rbapy",
-      "installationInstructions": "https://docs.biosimulators.org/Biosimulators_RBApy/installation.html"
+    "installationInstructions": "https://docs.biosimulators.org/Biosimulators_RBApy/installation.html"
   },
   "authors": [{
       "middleName": null,
