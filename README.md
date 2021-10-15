@@ -2,6 +2,7 @@
 [![PyPI](https://img.shields.io/pypi/v/biosimulators_rbapy)](https://pypi.org/project/biosimulators_rbapy/)
 [![CI status](https://github.com/biosimulators/Biosimulators_RBApy/workflows/Continuous%20integration/badge.svg)](https://github.com/biosimulators/Biosimulators_RBApy/actions?query=workflow%3A%22Continuous+integration%22)
 [![Test coverage](https://codecov.io/gh/biosimulators/Biosimulators_RBApy/branch/dev/graph/badge.svg)](https://codecov.io/gh/biosimulators/Biosimulators_RBApy)
+[![All Contributors](https://img.shields.io/github/all-contributors/biosimulators/Biosimulators_RBApy/HEAD)](#contributors-)
 
 # BioSimulators-RBApy
 BioSimulators-compliant command-line interface to the [RBApy](https://sysbioinra.github.io/RBApy/) simulation program for Resource Balance Analysis (RBA) models.
@@ -94,7 +95,7 @@ Documentation is available at https://docs.biosimulators.org/Biosimulators_RBApy
 This package is released under the [MIT license](LICENSE).
 
 ## Development team
-This package was developed by the [Center for Reproducible Biomedical Modeling](http://reproduciblebiomodels.org) and the [Karr Lab](https://www.karrlab.org) at the Icahn School of Medicine at Mount Sinai in New York.
+This package was developed by the [Center for Reproducible Biomedical Modeling](http://reproduciblebiomodels.org) and the [Karr Lab](https://www.karrlab.org) at the Icahn School of Medicine at Mount Sinai in New York with assistance from the contributors listed [here](CONTRIBUTORS.md).
 
 ## Questions and comments
 Please contact the [BioSimulators Team](mailto:info@biosimulators.org) with any questions or comments.
