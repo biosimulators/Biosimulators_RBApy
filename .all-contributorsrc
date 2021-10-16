@@ -13,12 +13,67 @@
       "contributions": [
         "code"
       ]
-    } 
+    },
+    {
+      "login": "abulovic",
+      "name": "abulovic",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1510530?v=4",
+      "profile": "https://github.com/abulovic",
+      "contributions": [
+        "tool"
+      ]
+    },
+    {
+      "login": "liebermeister",
+      "name": "Wolfram Liebermeister",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3976679?v=4",
+      "profile": "http://genome.jouy.inra.fr/~wliebermeis/index_en.html",
+      "contributions": [
+        "tool"
+      ]
+    },
+    {
+      "login": "yexilein",
+      "name": "yexilein",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30040612?v=4",
+      "profile": "https://github.com/yexilein",
+      "contributions": [
+        "tool"
+      ]
+    },
+    {
+      "login": "AnneGoelzer",
+      "name": "AnneGoelzer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32333634?v=4",
+      "profile": "https://github.com/AnneGoelzer",
+      "contributions": [
+        "tool"
+      ]
+    },
+    {
+      "login": "obodeit",
+      "name": "obodeit",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38722594?v=4",
+      "profile": "https://github.com/obodeit",
+      "contributions": [
+        "tool"
+      ]
+    },
+    {
+      "login": "MarcDinh",
+      "name": "MarcDinh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50445930?v=4",
+      "profile": "https://github.com/MarcDinh",
+      "contributions": [
+        "tool"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
   "projectName": "Biosimulators_RBApy",
   "projectOwner": "biosimulators",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "none"
 }
