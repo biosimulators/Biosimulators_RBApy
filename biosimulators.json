@@ -96,7 +96,7 @@
           }],
     "citations": [{
         "pages": "12-22",
-        "volume": 55,
+        "volume": "55",
         "journal": "Metabolic Engineering",
         "title": "Automated generation of bacterial resource allocation models",
         "authors": "Ana Bulović, Stephan Fischer, Marc Dinh, Felipe Golib, Wolfram Liebermeister, Christian Poirier, Laurent Tournier, Edda Klipp, Vincent Fromion & Anne Goelzer",
@@ -109,7 +109,7 @@
       },
       {
         "pages": "945-952",
-        "volume": 45,
+        "volume": "45",
         "issue": "4",
         "journal": "Biochemical Society Transactions",
         "title": "Resource allocation in living organisms",
@@ -123,7 +123,7 @@
       },
       {
         "pages": "232-243",
-        "volume": 32,
+        "volume": "32",
         "journal": "Metabolic Engineering",
         "title": "Quantitative prediction of genome-wide resource allocation in bacteria",
         "authors": "Anne Goelzer, Jan Muntel, Victor Chubukov, Matthieu Jules, Eric Prestel, Rolf Nölker, Mahendra Mariadassou, Stéphane Aymerich, Michael Hecker, Philippe Noirot, Dörte Becher & Vincent Fromion",
@@ -136,7 +136,7 @@
       },
       {
         "pages": "978-988",
-        "volume": 1810,
+        "volume": "1810",
         "issue": "10",
         "journal": "BBA General Subjects",
         "title": "Bacterial growth rate reflects a bottleneck in resource allocation",
@@ -150,7 +150,7 @@
       },
       {
         "pages": "1210-1218",
-        "volume": 47,
+        "volume": "47",
         "issue": "6",
         "journal": "Automatica",
         "title": "Cell design in bacteria as a convex optimization problem",
@@ -210,7 +210,7 @@
     }],
     "citations": [{
         "pages": "12-22",
-        "volume": 55,
+        "volume": "55",
         "journal": "Metabolic Engineering",
         "title": "Automated generation of bacterial resource allocation models",
         "authors": "Ana Bulović, Stephan Fischer, Marc Dinh, Felipe Golib, Wolfram Liebermeister, Christian Poirier, Laurent Tournier, Edda Klipp, Vincent Fromion & Anne Goelzer",
@@ -223,7 +223,7 @@
       },
       {
         "pages": "1210-1218",
-        "volume": 47,
+        "volume": "47",
         "issue": "6",
         "journal": "Automatica",
         "title": "Cell design in bacteria as a convex optimization problem",
@@ -289,7 +289,6 @@
   }],
   "funding": [],
   "biosimulators": {
-    "meta": null,
     "imageVersion": "1.0.0",
     "specificationVersion": "1.0.0",
     "validationTests": null,
