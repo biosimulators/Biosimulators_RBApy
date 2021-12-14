@@ -4,11 +4,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial &#8212; BioSimulators-RBApy 0.0.3 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial &#8212; BioSimulators-RBApy 0.0.4 documentation</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,10 +24,10 @@
 
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/biosimulators.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -38,7 +39,7 @@
     <link rel="next" title="biosimulators_rbapy package" href="source/biosimulators_rbapy.html" />
     <link rel="prev" title="Installation instructions" href="installation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="en">
     
       
       <link rel="icon" sizes="16x16" href="https://github.com/biosimulations/biosimulations/raw/dev/libs/shared/assets/src/assets/icons/favicon-16x16.png">
@@ -47,6 +48,9 @@
       
       <link rel="icon" sizes="32x32" href="https://github.com/biosimulations/biosimulations/raw/dev/libs/shared/assets/src/assets/icons/favicon-32x32.png">
       
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -261,35 +265,35 @@
               
               <div>
                 
-  <div class="section" id="tutorial">
+  <section id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
 <p>BioSimulators-RBApy is available as a command-line program and as a command-line program encapsulated into a Docker image.</p>
-<div class="section" id="creating-combine-omex-archives-and-encoding-simulation-experiments-into-sed-ml">
+<section id="creating-combine-omex-archives-and-encoding-simulation-experiments-into-sed-ml">
 <h2>Creating COMBINE/OMEX archives and encoding simulation experiments into SED-ML<a class="headerlink" href="#creating-combine-omex-archives-and-encoding-simulation-experiments-into-sed-ml" title="Permalink to this headline">¶</a></h2>
-<p>Information about how to create COMBINE/OMEX archives which can be executed by BioSimulators-RBApy is available at <a class="reference external" href="https://biosimulators.org/help">BioSimulators</a>.</p>
+<p>Information about how to create COMBINE/OMEX archives which can be executed by BioSimulators-RBApy is available <a class="reference external" href="`https://docs.biosimulations.org/users/creating-projects/">here</a>.</p>
 <p>A list of the algorithms and algorithm parameters supported by RBApy is available at <a class="reference external" href="https://biosimulators.org/simulators/rbapy">BioSimulators</a>.</p>
-<div class="section" id="models-rbapy">
+<section id="models-rbapy">
 <h3>Models (RBApy)<a class="headerlink" href="#models-rbapy" title="Permalink to this headline">¶</a></h3>
 <p>BioSimulators-RBApy can execute models encoded in <a class="reference external" href="https://sysbioinra.github.io/RBApy/usage.html">RBApy format</a> (<code class="docutils literal notranslate"><span class="pre">urn:sedml:language:rba</span></code>).</p>
-</div>
-<div class="section" id="simulation-experiments-sed-ml-kisao">
+</section>
+<section id="simulation-experiments-sed-ml-kisao">
 <h3>Simulation experiments (SED-ML, KISAO)<a class="headerlink" href="#simulation-experiments-sed-ml-kisao" title="Permalink to this headline">¶</a></h3>
 <p>BioSimulators-RBApy can execute simulation experiments encoded in SED-ML, using KiSAO to indicate specific algorithms and their parameters. Information about the algorithms (KiSAO terms), algorithm parameters (KiSAO terms), and outputs supported by BioSimulators-RBApy is available from the <a class="reference external" href="https://biosimulators.org/simulators/rbapy">BioSimulators registry</a>.</p>
-<div class="section" id="models-sedml-model">
+<section id="models-sedml-model">
 <h4>Models (<code class="docutils literal notranslate"><span class="pre">sedml.Model</span></code>)<a class="headerlink" href="#models-sedml-model" title="Permalink to this headline">¶</a></h4>
 <p>The TSV and XML files for a model should be packaged into a zip archive and specified using language URN <code class="docutils literal notranslate"><span class="pre">urn:sedml:language:rba</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">model</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;model&quot;</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;urn:sedml:language:rba&quot;</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;model.zip&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="targets-for-model-changes-sedml-attributechange">
+</section>
+<section id="targets-for-model-changes-sedml-attributechange">
 <h4>Targets for model changes (<code class="docutils literal notranslate"><span class="pre">sedml.AttributeChange</span></code>)<a class="headerlink" href="#targets-for-model-changes-sedml-attributechange" title="Permalink to this headline">¶</a></h4>
 <p>Targets for changes to model parameters should be encoded using the name of the parameter as <code class="docutils literal notranslate"><span class="pre">target=&quot;parameters.functions.{</span> <span class="pre">function</span> <span class="pre">id</span> <span class="pre">}.parameters.{</span> <span class="pre">parameter</span> <span class="pre">id</span> <span class="pre">}&quot;</span></code> such as <code class="docutils literal notranslate"><span class="pre">target=&quot;parameters.functions.LINEAR_CONSTANT.parameters.amino_acid_concentration&quot;</span></code>.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">attributeChange</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="n">parameters</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">LINEAR_CONSTANT</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">amino_acid_concentration</span><span class="s2">&quot; newValue=&quot;</span><span class="mf">0.25</span><span class="s2">&quot; /&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="simulations-sedml-steadystate-sedml-algorithm">
+</section>
+<section id="simulations-sedml-steadystate-sedml-algorithm">
 <h4>Simulations (<code class="docutils literal notranslate"><span class="pre">sedml.SteadyState</span></code>, <code class="docutils literal notranslate"><span class="pre">sedml.Algorithm</span></code>)<a class="headerlink" href="#simulations-sedml-steadystate-sedml-algorithm" title="Permalink to this headline">¶</a></h4>
 <p>RBA simulations should be encoded using the <code class="docutils literal notranslate"><span class="pre">SteadyState</span></code> class with simulation algorithm <code class="docutils literal notranslate"><span class="pre">KISAO_0000669</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">steadyState</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;simulation&quot;</span><span class="o">&gt;</span>
@@ -297,8 +301,8 @@
 <span class="o">&lt;/</span><span class="n">steadyState</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="targets-for-observables-sedml-variable-of-sedml-datagenerator">
+</section>
+<section id="targets-for-observables-sedml-variable-of-sedml-datagenerator">
 <h4>Targets for observables (<code class="docutils literal notranslate"><span class="pre">sedml.Variable</span></code> of <code class="docutils literal notranslate"><span class="pre">sedml.DataGenerator</span></code>)<a class="headerlink" href="#targets-for-observables-sedml-variable-of-sedml-datagenerator" title="Permalink to this headline">¶</a></h4>
 <p>Targets for objectives should be encoded as <code class="docutils literal notranslate"><span class="pre">target=&quot;objective&quot;</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dataGenerator</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;data_generator_objective&quot;</span><span class="o">&gt;</span>
@@ -333,14 +337,14 @@
 <span class="o">&lt;/</span><span class="n">dataGenerator</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="example-combine-omex-archives">
+</section>
+</section>
+<section id="example-combine-omex-archives">
 <h3>Example COMBINE/OMEX archives<a class="headerlink" href="#example-combine-omex-archives" title="Permalink to this headline">¶</a></h3>
 <p>Examples of COMBINE/OMEX archives for simulations which BioSimulators-RBApy can execute are available in the <a class="reference external" href="https://github.com/biosimulators/Biosimulators_test_suite/tree/deploy/examples">BioSimulators test suite</a>.</p>
-</div>
-</div>
-<div class="section" id="command-line-program">
+</section>
+</section>
+<section id="command-line-program">
 <h2>Command-line program<a class="headerlink" href="#command-line-program" title="Permalink to this headline">¶</a></h2>
 <p>The command-line program can be used to execute COMBINE/OMEX archives that describe simulations as illustrated below.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: biosimulators-rbapy [-h] [-d] [-q] -i ARCHIVE [-o OUT_DIR] [-v]
@@ -363,8 +367,8 @@ optional arguments:
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>biosimulators-rbapy -i ./modeling-study.omex -o ./
 </pre></div>
 </div>
-</div>
-<div class="section" id="docker-image-with-a-command-line-entrypoint">
+</section>
+<section id="docker-image-with-a-command-line-entrypoint">
 <h2>Docker image with a command-line entrypoint<a class="headerlink" href="#docker-image-with-a-command-line-entrypoint" title="Permalink to this headline">¶</a></h2>
 <p>The entrypoint to the Docker image supports the same command-line interface described above.</p>
 <p>For example, the following command could be used to use the Docker image to execute the same simulations described in <code class="docutils literal notranslate"><span class="pre">./modeling-study.omex</span></code> and save their results to <code class="docutils literal notranslate"><span class="pre">./</span></code>:</p>
@@ -377,12 +381,12 @@ optional arguments:
         -o /tmp/working-dir
 </pre></div>
 </div>
-</div>
-<div class="section" id="using-biosimulators-rbapy-with-a-gurobi-license">
+</section>
+<section id="using-biosimulators-rbapy-with-a-gurobi-license">
 <h2>Using BioSimulators-RBApy with a Gurobi license<a class="headerlink" href="#using-biosimulators-rbapy-with-a-gurobi-license" title="Permalink to this headline">¶</a></h2>
 <p>Gurobi licenses can be used either by setting environment variables prefixed with <code class="docutils literal notranslate"><span class="pre">GRB_</span></code> or by saving your license to your home directory (<code class="docutils literal notranslate"><span class="pre">~/gurobi.lic</span></code>) or the appropriate location for your OS (e.g., <code class="docutils literal notranslate"><span class="pre">/opt/gurobi/gurobi.lic</span></code> for Linux).</p>
-</div>
-</div>
+</section>
+</section>
 
 
               </div>
@@ -394,14 +398,13 @@ optional arguments:
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, BioSimulators Team.<br/>
+    &copy; Copyright 2021, BioSimulators Team.<br>
 </p>
     </div>
     
